@@ -3,6 +3,8 @@ export const siteConfig = {
   description:
     "A premium daycare experience where children learn, play, and grow in a safe, nurturing space.",
   url: "https://littleblossomsdaycare.com",
+  phone: "+919876543210",
+  whatsapp: "919876543210",
 };
 
 export const navItems = [

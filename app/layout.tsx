@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import QuickActions from "@/components/ui/QuickActions";
 import { siteConfig } from "@/lib/site";
 import "../styles/globals.css";
 
@@ -62,6 +63,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <QuickActions />
       </body>
     </html>
   );
