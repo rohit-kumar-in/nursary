@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import { siteConfig } from "@/lib/site";
 import "../styles/globals.css";
 
 const geistSans = Geist({
@@ -13,8 +16,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Little Blossoms Daycare",
-  description: "Premium daycare website",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: `${siteConfig.name} | Premium Daycare`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: [
+    "daycare",
+    "preschool",
+    "childcare",
+    "early learning",
+    "premium daycare",
+  ],
+  openGraph: {
+    title: `${siteConfig.name} | Premium Daycare`,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} | Premium Daycare`,
+    description: siteConfig.description,
+  },
 };
 
 export default function RootLayout({
@@ -27,7 +55,14 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <a href="#home" className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3">
+          Skip to content
+        </a>
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
